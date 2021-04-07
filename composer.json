@@ -1,0 +1,27 @@
+{
+    "name": "magento/module-giftcard",
+    "description": "N/A",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+    },
+    "suggest": {
+        "magento/module-cookie": "100.3.*",
+        "magento/module-customer-sample-data": "Sample Data version: 100.3.*"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magento\\Customer\\": ""
+        }
+    },
+    "version": "102.0.6"
+}

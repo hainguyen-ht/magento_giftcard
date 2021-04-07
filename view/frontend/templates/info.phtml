@@ -1,0 +1,41 @@
+<?php
+/** @var \Mageplaza\GiftCard\Block\GiftCard\Info $block */
+$customerID = $block->getCustomerID();
+
+$data = $block->getCustomers()->getData();
+$balance = array();
+foreach ($data as $customerS){
+    if($customerS['entity_id'] === $block->getCustomerID()){
+        $balance = $customerS;
+    }
+}
+
+$balance = $balance['giftcard_balance'];
+
+?>
+<div class="block block-dashboard-info">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Gift Card Information')) ?></strong></div>
+    <div class="block-content">
+        <div class="box box-information">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Balance')) ?></span>
+            </strong>
+            <div class="box-content">
+                <?= '$'.$balance ?>
+            </div>
+        </div>
+        <?php if($block->isEnableConfig() == 1) { ?>
+        <div class="box box-newsletter">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Redeem')) ?></span>
+            </strong>
+            <div class="box-content">
+                <form method="post" action="<?= $block->getFormAction() ?>">
+                    <input type="text" name="redeem" placeholder="Enter Gift Card Code" required>
+                    <button type="submit" name="submit">Redeem</button>
+                </form>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+</div>
